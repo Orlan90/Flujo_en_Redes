@@ -1,0 +1,44 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[de~Valladolid(2008)]{art1}
+Universidad de~Valladolid.
+\newblock Grafos no dirigidos acíclicos: Árboles.
+\newblock 2008.
+
+\bibitem[Benavides()]{art2}
+Prof. Kryscia Daviana~Ramírez Benavides.
+\newblock Teoría de grafos y Árboles.
+\newblock Universidad de Costa Rica. Escuela de Ciencias de la Computación e
+  Informática.
+
+\bibitem[J.Torres(2018)]{art3}
+J.Torres.
+\newblock Tema: 2 red compleja como ejemplo de sistema complejo.
+\newblock 2018.
+
+\bibitem[Nottoli(1998)]{art4}
+Hernán~S. Nottoli.
+\newblock Teoría de grafos. aplicaciones al diseño arquitectónico.
+\newblock 1998.
+
+\bibitem[Recuero()]{art5}
+Alfonso Recuero.
+\newblock Aplicaciones de la teoría de grafos: Búsqueda de caminos en una red
+  y análisis de su conectividad.
+  
+\bibitem[E.~Martín(2011)]{art6}
+C.~Ortiz y J.~Sendra E.~Martín, A.~Méndez.
+\newblock Tema 5: Grafos.
+\newblock 2011.
+
+\bibitem[Duarte(2010)]{art7}
+Nidia Lizzeth~Gómez Duarte.
+\newblock Efectos estructurales en la sincronización de sistemas.
+\newblock Master's thesis, Universidad Autónoma de Nuevo León, 2010.
+
+\end{thebibliography}
