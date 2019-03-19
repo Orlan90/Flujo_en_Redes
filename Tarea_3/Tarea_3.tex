@@ -1,0 +1,166 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[left=2cm,right=2cm,top=1.1cm,bottom=2cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{url}
+\usepackage{caption}
+\author{Orlando Lázaro Ruiloba Torres\hspace{.4cm}5270}
+\title{Tarea 3 Optimización de Flujo en Redes}
+\date{\today}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+	frame=tb,
+	language=Python,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\begin{document}
+\maketitle
+
+\section{Algoritmo ordenamiento topológico}
+
+Este algoritmo devuelve una lista de vértices en ordenamiento topológico, lo cual se traduce en que realiza una permutación no única de los vértices, de modo que una arista de $u$ a $v$ implica que $u$ aparece antes de $v$ en el orden de clasificación topológico \cite{a1}\vspace{.4cm}.
+
+El ordenamiento topológico es una adaptación simple pero útil de una búsqueda en profundidad. Sus pasos se describen a continuación \cite{a6}:
+
+\begin{itemize}
+
+\item[1.-]Llamar a la búsqueda en profundidad para el grafo en cuestión. La principal razón por la que se invoca a la búsqueda en profundidad, es para calcular los tiempos de finalización para cada uno de los vértices.
+\item[2.-]Almacenar los vértices en una lista en orden decreciente según el tiempo de finalización.
+\item[3.-]Devolver la lista ordenada como resultado del ordenamiento topológico.
+
+\end{itemize}
+
+El código en python se muestra a continuación:
+
+\lstinputlisting[language=Python, firstline=10, lastline=49]{algoritmos2.py}
+
+A continuación en la figura 1, se muestra un histograma que ilustra el comportamiento de este algoritmo para las 30 veces en que se efectuaron las 100000 réplicas con sus respectivos tiempos de cómputo:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{Histograma1}
+\captionof{figure}{Histograma No.1}
+
+\end{center}
+
+\section{Algoritmo árbol de expansión mínimo}
+
+Un árbol de expansión mínimo es un subgrafo del grafo dado (un árbol) con la suma mínima de los pesos de sus aristas. Este algoritmo genera aristas en un bosque de expansión mínimo de un grafo ponderado no dirigido, este bosque es una unión de los árboles de expansión para cada componente conectado del grafo \citep{a2}.\vspace{.4cm}
+
+El código es el siguiente:
+
+\lstinputlisting[language=Python, firstline=54, lastline=98]{algoritmos2.py}
+
+En la figura 2, se muestra el histograma correspondiente:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{Histograma2}
+\captionof{figure}{Histograma No.2}
+
+\end{center}
+
+\section{Algoritmo centralidad de intermediación}
+
+Este algoritmo calcula la centralidad de intermediación de cada vértice de un grafo dado \cite{a3}, esta se encarga de medir en un grafo la tendencia de un vértice único a ser más central que todos los demás vértices en el mismo. Se basa en las diferencias entre la centralidad del vértice más central y la de todos los demás \cite{a7}.\vspace{.4cm}
+
+El código en python es:
+
+\lstinputlisting[language=Python, firstline=103, lastline=141]{algoritmos2.py}
+
+El histograma para este algoritmo aparece a continuación:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{Histograma3}
+\captionof{figure}{Histograma No.3}
+
+\end{center} 
+
+\section{Algoritmo árbol dfs}
+
+Este algoritmo devuelve un árbol orientado, construido a partir de una búsqueda en profundidad desde el origen \cite{a4}. 
+La técnica de cruce de DFS (Depth First Search o Búsqueda en Profundidad) de un grafo produce un árbol de expansión como resultado final, es decir, un grafo que no contiene ningún ciclo. En este caso, la estructura de datos se usa con el tamaño máximo del número total de vértices en el grafo para implementar el recorrido DFS \cite{a8}.\vspace{.4cm}
+
+El código en python es el siguiente:
+
+\lstinputlisting[language=Python, firstline=146, lastline=188]{algoritmos2.py}
+
+En la figura 4 se puede apreciar el histograma referido al algoritmo que se analiza en esta sección:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{Histograma4}
+\captionof{figure}{Histograma No.4}
+
+\end{center}  
+
+\section{Algoritmo camarilla máxima}
+
+El objetivo que persigue este algoritmo, es encontrar el mayor grupo de nodos en un grafo, de forma tal que todos estén conectados entre sí \cite{a5}. Una camarilla en un grafo no dirigido G = (V, E) es un subconjunto del conjunto de vértices C, de manera que por cada dos vértices en C, existe una arista que conecta los dos. La camarilla máxima es aquella que posee el mayor tamaño posible en un grafo dado \cite{a9}.\vspace{.4cm}
+
+El código es:
+
+\lstinputlisting[language=Python, firstline=193, lastline=238]{algoritmos2.py}
+
+A continuación, en la figura siguiente se muestra el histograma:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{Histograma5}
+\captionof{figure}{Histograma No.5}
+
+\end{center}
+
+Vale la pena recalcar que se realizó la prueba de normalidad Shapiro Wilk, para los datos recolectados del análisis de cada algoritmo por separado, arrojando la misma, que en ninguno de los casos, los datos poseían una distribución normal, por lo cual no se pudo tomar los valores de la media, ni de la desviación estándar como referencia en el análisis. 
+
+\section{Discusión de conclusiones}
+
+A continuación se muestran las dos gráficas de dispersión necesarias para efectuar el análisis del comportamiento de las combinaciones algoritmo-grafo:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{Dispersion1}
+\captionof{figure}{Gráfica No.1}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[scale=0.6]{Dispersion2}
+\captionof{figure}{Gráfica No.2}
+
+\end{center}
+
+A partir del análisis de las gráficas anteriores, se puede concluir que la combinación algoritmo-grafo que mostró tiempos de ejecución más pequeños, para el número de réplicas realizadas (100000), fue la de orden topológico y la que arrojó mayores tiempos, fue la correspondiente a centralidad de intermediación, en el resto de las combinaciones los tiempos toman valores mayores que 5 y menores a 12 segundos. También se puede apreciar que no existe mucha dispersión entre los tiempos obtenidos para las diferentes combinaciones ya que se encuentran en un rango de valores cercanos.\newpage 
+
+\bibliography{Referencias}
+
+\bibliographystyle{plainnat}
+
+\end{document}
