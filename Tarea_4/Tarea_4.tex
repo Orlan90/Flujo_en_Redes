@@ -1,0 +1,142 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[left=2cm,right=2cm,top=1.1cm,bottom=2cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{float}
+\author{Orlando Lázaro Ruiloba Torres\hspace{.4cm}5270}
+\title{Tarea 4 Optimización de Flujo en Redes}
+\date{\today}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+	frame=tb,
+	language=Python,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\begin{document}
+\maketitle
+
+\section{Breve explicación del objetivo que se persigue}
+
+Para la realización de este trabajo se seleccionaron tres métodos generadores de grafos, de los cuales en las secciones siguientes se expone una breve explicación, a partir de estos se generaron 10 grafos de cuatro órdenes distintos en escala logarítmica, a los cuales se les asignaron pesos no negativos y normalmente distribuidos con el fin de poder implementar tres de los algoritmos de networkx para flujo máximo seleccionados, los cuales se ejecutaron cinco veces para los cinco pares fuente - sumidero elegidos, con el fín de determinar mediante el uso de técnicas estadísticas el efecto o interacción existente por parte los métodos generadores, los algoritmos usados, el orden y la densidad de los grafos en el tiempo de ejecución.\vspace{.4cm} 
+
+A continuación se ofrece una breve explicación de cada uno de los métodos y algoritmos seleccionados:
+
+\section{Método generador de grafos: Árbol lleno r-ario}
+
+Este método crea un árbol r-ario completo de $n$ vértices. Todos los vértices que no son hojas tienen exactamente $r$ hijos y todos los niveles están llenos excepto por alguna posición más a la derecha del nivel inferior (si falta una hoja en el nivel inferior, entonces también están todas las hojas a su derecha \cite{a1}.
+
+\section{Método generador de grafos: Grafo completo}
+
+Este método devuelve un grafo completo $K$, con $n$ vértices, en el caso de que $n$ sea un número entero, los vértices son de rango $n$, por otro lado si $n$ es un contenedor de vértices, estos aparecen en el grafo \cite{a2}. Un grafo completo, es un grafo en el que cada vértice comparte una arista con cada uno de los otros vértices. Si se trata de un grafo dirigido, las aristas deben existir siempre en ambas direcciones \cite{a3}.
+
+\section{Método generador de grafos: Grafo rueda}
+
+Este método devuelve un grafo rueda. El grafo de la rueda consiste en un vértice central conectado a un ciclo de $n-1$ vértices \cite{a4} y para el cual cada vértice del grafo en el ciclo está conectado a otro \cite{a5}.
+
+\section{Algoritmo: Valor de flujo máximo}
+
+Este algoritmo consiste en determinar cuál es la tasa mayor a la cual un determinado material puede ser transportado de la fuente al sumidero sin violar ninguna restricción de capacidad \cite{a6}.
+
+\section{Algoritmo: Corte mínimo}
+
+Este algoritmo calcula el valor del corte mínimo y de la partición de vértice. Utiliza el teorema de corte mínimo de flujo máximo, es decir, la capacidad de un corte de capacidad mínima es igual al valor de flujo de un flujo máximo \cite{a7}.
+
+\section{Algoritmo: Valor de corte mínimo}
+
+Este algoritmo es muy similar al anterior, pero tiene la tipicidad de que solo calcula el valor del corte mínimo. Utiliza el teorema de corte mínimo de flujo máximo, es decir, la capacidad de un corte de capacidad mínima es igual al valor de flujo de un flujo máximo \cite{a8}.
+
+\section{Discusión de conclusiones}
+
+A continuación se muestran las cuatro gráficas de caja necesarias para efectuar el análisis del comportamiento del efecto que tienen sobre el tiempo de ejecución, los tres métodos generadores de grafos, los tres algoritmos seleccionados, el orden de cada grafo y la densidad de los mismos:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{graf_1}
+\captionof{figure}{Efecto de los métodos generadores de grafos seleccionados sobre el tiempo de ejecución}
+
+\end{center}
+
+Como se puede apreciar en la Figura 1, el método generador de grafos que más tardó en ejecutarse fue el de Grafo completo, siendo este el que mayor efecto tuvo sobre el tiempo de ejecución, en los otros dos casos los tiempos fueron muy similares.  
+
+\begin{center}
+
+\includegraphics[scale=0.6]{graf_2}
+\captionof{figure}{Efecto de los algoritmos seleccionados sobre el tiempo de ejecución}
+
+\end{center}
+
+A partir de la Figura 2, se puede concluir que todos los algoritmos seleccionados mostraron tiempos de ejecución similares, por lo que a través de la realización del análisis estadístico (ANOVA) que se realiza con posterioridad se podra concluir de manera más certera el posible efecto. 
+
+\begin{center}
+
+\includegraphics[scale=0.6]{graf_3}
+\captionof{figure}{Efecto del orden del grafo sobre el tiempo de ejecución}
+
+\end{center}
+
+Como se puede observar en la Figura 3, a medida que aumenta el orden del grafo aumenta también el tiempo de ejecución, por lo que se puede concluir que son directamente proporcionales y que definitivamente el orden seleccionado va a tener un efecto considerable en el tiempo de ejecución.
+
+\begin{center}
+
+\includegraphics[scale=0.6]{graf_4}
+\captionof{figure}{Efecto de la densidad del grafo sobre el tiempo de ejecución}
+
+\end{center}
+
+Como se puede apreciar a partir de la figura anterior, la variación de los tiempos de ejecución es muy pequeña, sin embargo cuando la densidad llega a 1, el valor de este se incrementa de forma considerable, lo que permite afirmar que la densidad del grafo si va a repercutir en el tiempo de ejecución.\vspace{.4cm}\newpage
+
+Seguidamente se muestra un cuadro en el que se exponen los resultados del análisis de varianza (ANOVA):
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{lllllll}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{\textbf{sum sq}}       & \multicolumn{1}{c}{\textbf{df}}     & \multicolumn{1}{c}{\textbf{F}}             & \multicolumn{1}{c}{\textbf{PR(\textgreater{}F)}} &  &  \\
+Generador            & \multicolumn{1}{r}{1.394225e-10}  & \multicolumn{1}{r}{2.0}    & \multicolumn{1}{r}{3.931140e-07}  & \multicolumn{1}{r}{1.000000}            &  &  \\
+Algoritmo            & \multicolumn{1}{r}{4.165406e-03}  & \multicolumn{1}{r}{2.0}    & \multicolumn{1}{r}{1.174473e+01}  & \multicolumn{1}{r}{0.000009}            &  &  \\
+Orden                & \multicolumn{1}{r}{-1.289626e-11} & \multicolumn{1}{r}{1.0}    & \multicolumn{1}{r}{-7.272428e-08} & \multicolumn{1}{r}{1.000000}            &  &  \\
+Densidad             & \multicolumn{1}{r}{1.511910e-10}  & \multicolumn{1}{r}{1.0}    & \multicolumn{1}{r}{8.525926e-07}  & \multicolumn{1}{r}{0.999263}            &  &  \\
+Generador:Algoritmo  & \multicolumn{1}{r}{2.385267e-04}  & \multicolumn{1}{r}{4.0}    & \multicolumn{1}{r}{3.362736e-01}  & \multicolumn{1}{r}{0.853637}            &  &  \\
+Generador:Orden      & \multicolumn{1}{r}{9.396538e-07}  & \multicolumn{1}{r}{2.0}    & \multicolumn{1}{r}{2.649437e-03}  & \multicolumn{1}{r}{0.997354}            &  &  \\
+Generador:Densidad   & \multicolumn{1}{r}{1.879308e-06}  & \multicolumn{1}{r}{2.0}    & \multicolumn{1}{r}{5.298874e-03}  & \multicolumn{1}{r}{0.941979}            &  &  \\
+Algoritmo:Densidad   & \multicolumn{1}{r}{6.478017e-04}  & \multicolumn{1}{r}{2.0}    & \multicolumn{1}{r}{1.826534e+00}  & \multicolumn{1}{r}{0.161272}            &  &  \\
+Orden:Densidad       & \multicolumn{1}{r}{9.396538e-07}  & \multicolumn{1}{r}{1.0}    & \multicolumn{1}{r}{5.298874e-03}  & \multicolumn{1}{r}{0.941979}            &  &  \\
+Residual             & \multicolumn{1}{r}{3.160036e-01}  & \multicolumn{1}{r}{1782.0} & \multicolumn{1}{r}{}              & \multicolumn{1}{r}{}                    &  &  \\                   
+\end{tabular}
+\end{center}
+\caption{Resultados obtenidos ANOVA}
+\end{table}
+
+A partir de los resultados expuestos anteriormente se puede concluir que para el caso de el método generador, el orden del grafo y la densidad, como su p valor $>$ 0.05, el tiempo de ejecución va a sufrir variaciones en dependencia del método elegido, el orden asignado y la densidad que posea el grafo en cuestión, lo cual no sucede para el caso del algoritmo seleccionado, el cual no va a tener ninguna injerencia o efecto sobre el tiempo de ejecución.\newpage
+
+\bibliography{Referencias}
+
+\bibliographystyle{plainnat}
+
+\end{document}
